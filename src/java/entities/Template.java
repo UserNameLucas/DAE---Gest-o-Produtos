@@ -8,7 +8,7 @@ package entities;
 /**
  *
  * @author Lucas
- *  ------------------------------VER MELHOR
+ *  ------------------------------VER MESMO MELHOR
  */
 public class Template {
     

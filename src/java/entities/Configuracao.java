@@ -8,7 +8,15 @@ package entities;
 /**
  *
  * @author Lucas
+ * 
+ * ------------------ VER FOLHA 
+ * 
  */
 public class Configuracao {
+    private String descricao;
+    private Estado estado;
+    private String nomeSoftware;
+    private String versaoBase;
+    //private Modulo modulos;
     
 }
