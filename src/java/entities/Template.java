@@ -9,6 +9,7 @@ package entities;
  *
  * @author Lucas
  *  ------------------------------VER MESMO MELHOR
+ *          configuracao e nome ????????
  */
 public class Template {
     

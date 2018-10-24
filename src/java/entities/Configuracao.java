@@ -16,7 +16,8 @@ public class Configuracao {
     private String descricao;
     private Estado estado;
     private String nomeSoftware;
-    private String versaoBase;
-    //private Modulo modulos;
+    private int versaoBase;
+    private Modulo modulos;
+    
     
 }
