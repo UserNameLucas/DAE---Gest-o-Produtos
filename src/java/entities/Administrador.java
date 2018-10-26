@@ -15,13 +15,15 @@ import javax.persistence.Entity;
 @Entity
 public class Administrador  extends User implements Serializable {
     private String cargo;
+    private String email;
 
     public Administrador() {
     }
 
     public Administrador(String cargo, String name, String username, String password, String email) {
-        super(name, username, password, email);
+        super(name, username, password);
         this.cargo = cargo;
+        this.email = email;
     }
 
     public String getCargo() {
@@ -31,5 +33,14 @@ public class Administrador  extends User implements Serializable {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+        
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     
 }

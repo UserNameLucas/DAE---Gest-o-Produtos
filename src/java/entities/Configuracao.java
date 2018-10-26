@@ -18,6 +18,12 @@ public class Configuracao {
     private String nomeSoftware;
     private int versaoBase;
     private Modulo modulos;
+    // SERVIÇOS CLOUD UTILIZADOS
+    // LINCENCAS 
+    // PARAMETRIZAÇÕES 
+    // DADOS DO CONTRATO DE MANUTENÇAO 
+    // ARTIFACTOS
+    
     
     
 }

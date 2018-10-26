@@ -19,18 +19,18 @@ import javax.persistence.PersistenceContext;
  * @author Lucas
  */
 @Stateless
-public class ClienteBean {
+public class ClienteBean extends BaseBean<Cliente>{
     
     @PersistenceContext
     private EntityManager em;
     
-    public void create(String morada, String pessoaContacto, String name,String username, String password, String email)
+    public void create(String morada, String pessoaContacto, String name,String username, String password)
             throws EntityAlreadyExistsException{
         try {
             if (em.find(User.class, username) != null) {
                 throw new EntityAlreadyExistsException("O utilizador com este username já existe!");
             }
-            Cliente cliente = new Cliente(morada, pessoaContacto, name, username, password, email);
+            Cliente cliente = new Cliente(morada, pessoaContacto, name, username, password);
             em.persist(cliente);
         } catch (EntityAlreadyExistsException e) {
             throw e;

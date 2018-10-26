@@ -6,6 +6,8 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 
 /**
@@ -16,14 +18,26 @@ import javax.persistence.Entity;
 public class Cliente extends User implements Serializable{
     private String morada;
     private String pessoaContacto; // ver com o prof se a pessoa de contacto pode ser string ou precisamos guardar a informacao da pessoa
-
+    
+    private List<Configuracao> configuracoes;
+    
     public Cliente() {
+        this.configuracoes = new ArrayList<>();
     }
 
-    public Cliente(String morada, String pessoaContacto, String name, String username, String password, String email) {
-            super(name, username, password, email);
+    public Cliente(String morada, String pessoaContacto, String name, String username, String password) {
+            super(name, username, password);
         this.morada = morada;
         this.pessoaContacto = pessoaContacto;
+        this.configuracoes = new ArrayList<>();
+    }
+
+    public List<Configuracao> getConfiguracoes() {
+        return configuracoes;
+    }
+
+    public void setConfiguracoes(List<Configuracao> configuracoes) {
+        this.configuracoes = configuracoes;
     }
 
     public String getMorada() {

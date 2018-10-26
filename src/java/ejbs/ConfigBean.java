@@ -32,9 +32,9 @@ public class ConfigBean {
     public void populateBD() {
 
         try {
-            clienteBean.create("trav. daquela rua", "Jaquim", "FAzTudo", "userA", "userA", "usera@mail.com");
-            clienteBean.create("trav. da outra rua", "Fernandim", "FezTudo", "userB", "userB", "userb@mail.com");
-            clienteBean.create("trav. da outra rua mas do outro lado", "Zezim", "QuerFazer", "userC", "userC", "userc@mail.com");
+            clienteBean.create("trav. daquela rua", "Jaquim", "FAzTudo", "userA", "userA");
+            clienteBean.create("trav. da outra rua", "Fernandim", "FezTudo", "userB", "userB");
+            clienteBean.create("trav. da outra rua mas do outro lado", "Zezim", "QuerFazer", "userC", "userC");
             
             administradorBean.create("Presidente", "Filermindo", "adminA", "adminA", "adminA@mail.com");
 
