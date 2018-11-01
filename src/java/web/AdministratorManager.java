@@ -37,14 +37,25 @@ public class AdministratorManager {
     public AdministratorManager() {
     }
     
+ 
     public String createCliente(){
         try{
            cb.create(morada, pessoaContacto, name, username, password);
+           cleanCliente();
+           return "index?faces-redirect=true";
         //cleanStudent();
         }catch(EntityAlreadyExistsException e){
             return e.getMessage();
         }
-        return "index?faces-redirect=true";
+        
+    }
+    
+    public void cleanCliente(){
+        this.morada=null;
+        this.name=null;
+        this.username=null;
+        this.password=null;
+        this.pessoaContacto = null;
     }
 
     public String getName() {
