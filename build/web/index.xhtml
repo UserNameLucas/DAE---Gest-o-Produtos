@@ -5,11 +5,32 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <h:body>
-        Hello from Facelets
-        <div>
-            <h:link value="Create a Cliente" outcome="cliente/admins_client_create"></h:link>
-        </div>
+     <h:body>
+        <h1>Criar uma Configuração de Software</h1>
+        
+        <h:form>
+            <h:panelGrid columns="3">
+            
+                <h:outputLabel for="nomeSoftware">Nome do Software:</h:outputLabel>
+                <h:inputText id="nomeSoftware" 
+                             required="true" 
+                             requiredMessage="O nome do software é necessário"
+                             value="#{administratorManager.nomeSoftware}"/>
+                <h:message for="nomeSoftware" style="color:red"/>
+
+                <h:outputLabel for="descricao">Descricao:</h:outputLabel>
+                <h:inputText id="descricao" 
+                             required="true"
+                             requiredMessage="A descricao é necessário"
+                             value="#{administratorManager.descricao}"/>
+                <h:message for="descricao" style="color:red"/>                
+               
+                <br></br>
+                 
+            <h:commandButton value="CREATE" action="#{administratorManager.createConfiguracao}"/>
+            </h:panelGrid>
+            
+        </h:form>
     </h:body>
 </html>
 

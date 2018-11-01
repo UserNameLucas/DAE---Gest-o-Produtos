@@ -40,11 +40,20 @@ public class AdministratorManager {
     private String password;
     
     //Configuracao
+    private int id;
     private String descricao;
     private Estado estado;
     private String nomeSoftware;
     private int versaoBase;
     private Modulo modulos;
+    
+    public SoftConfigBean getSb() {
+        return sb;
+    }
+
+    public void setSb(SoftConfigBean sb) {
+        this.sb = sb;
+    }
 
     public AdministratorManager() {
     }
@@ -59,14 +68,12 @@ public class AdministratorManager {
         return "index?faces-redirect=true";
     }
     
-    public String createConfiguracao(){
-        try{
-           sb.create(descricao, estado, nomeSoftware, versaoBase, modulos);
+    public String createConfiguracao() throws Exception{
+        
+           sb.create(id, descricao, estado, nomeSoftware, versaoBase, modulos);
         //cleanStudent();
-        }catch(EntityAlreadyExistsException e){
-            return e.getMessage();
-        }
         return "index?faces-redirect=true";
+        
     }
 
     public String getName() {
@@ -109,6 +116,47 @@ public class AdministratorManager {
         this.password = password;
     }
     
+    //Configuracao
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
+    public void setModulos(Modulo modulos) {
+        this.modulos = modulos;
+    }
+
+    public String getNomeSoftware() {
+        return nomeSoftware;
+    }
+
+    public void setNomeSoftware(String nomeSoftware) {
+        this.nomeSoftware = nomeSoftware;
+    }
+
+    public int getVersaoBase() {
+        return versaoBase;
+    }
+
+    public void setVersaoBase(int versaoBase) {
+        this.versaoBase = versaoBase;
+    }
+
+    public Modulo getModulos() {
+        return modulos;
+    }
+
     
     public List<Cliente> getAllClientes(){
         return cb.getAll();

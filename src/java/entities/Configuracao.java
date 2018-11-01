@@ -6,6 +6,9 @@
 package entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
@@ -14,7 +17,11 @@ import java.io.Serializable;
  * ------------------ VER FOLHA 
  * 
  */
+@Entity
+@Table(name = "CONFIGURACAO")
 public class Configuracao implements Serializable{
+    @Id
+    private int id;
     private String descricao;
     private Estado estado;
     private String nomeSoftware;
@@ -29,12 +36,21 @@ public class Configuracao implements Serializable{
     public Configuracao() { 
     }
 
-    public Configuracao(String descricao, Estado estado, String nomeSoftware, int versaoBase, Modulo modulos) {
+    public Configuracao(int id, String descricao, Estado estado, String nomeSoftware, int versaoBase, Modulo modulos) {
+        this.id = id;
         this.descricao = descricao;
         this.estado = estado;
         this.nomeSoftware = nomeSoftware;
         this.versaoBase = versaoBase;
         this.modulos = modulos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescricao() {
