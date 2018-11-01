@@ -32,21 +32,14 @@
                              required="true"
                              requiredMessage="O username é precisso"
                              value="#{administratorManager.currentCliente.pessoaContacto}"/>
-                <h:message for="pessoaContacto" style="color:red"/>
-
-
-                <h:outputLabel for="username">UserName:</h:outputLabel>
-                <h:inputText id="username" 
-                             required="true"
-                             requiredMessage="O username é precisso"
-                             value="#{administratorManager.currentCliente.username}"/>
-                <h:message for="username" style="color:red"/>
-                 
-                
+                <h:message for="pessoaContacto" style="color:red"/>                
                
                 <br></br>
                  
             <h:commandButton value="UPDATE" action="#{administratorManager.updateCliente}"/>
+            <div>
+               <h:link value="RETURN" outcome="index"></h:link>
+           </div>
             </h:panelGrid>
             
         </h:form>

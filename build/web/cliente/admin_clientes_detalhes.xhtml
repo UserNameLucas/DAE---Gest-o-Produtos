@@ -7,6 +7,23 @@
     </h:head>
     <h:body>
         Detalhes do cliente
+        
+        <h:form>
+            
+        <h:panelGrid columns="2">
+        <h:outputLabel>Name:</h:outputLabel>
+           <h:outputLabel for="name">#{administratorManager.currentCliente.name}</h:outputLabel>
+        <h:outputLabel>Morada:</h:outputLabel> 
+           <h:outputLabel for="morada">#{administratorManager.currentCliente.morada}</h:outputLabel>
+        <h:outputLabel>Pessoa Contacto:</h:outputLabel>   
+           <h:outputLabel for="pessoaContacto">#{administratorManager.currentCliente.pessoaContacto}</h:outputLabel>
+           
+        <div>
+           <h:link value="RETURN" outcome="index"></h:link>
+        </div>
+        
+        </h:panelGrid>
+        </h:form>
     </h:body>
 </html>
 
