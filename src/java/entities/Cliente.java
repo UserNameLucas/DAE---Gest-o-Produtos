@@ -9,12 +9,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Lucas
  */
 @Entity
+@NamedQuery(
+    name="getAllClientes",
+    query="SELECT c FROM Cliente c ORDER BY c.name"
+)
 public class Cliente extends User implements Serializable{
     private String morada;
     // ver com o prof se a pessoa de contacto pode ser string ou precisamos guardar a informacao da pessoa

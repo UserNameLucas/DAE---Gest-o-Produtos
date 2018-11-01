@@ -8,10 +8,14 @@ package ejbs;
 import entities.Cliente;
 import entities.User;
 import exceptions.EntityAlreadyExistsException;
+import exceptions.EntityDoesNotExistsException;
+import exceptions.MyConstraintViolationException;
+import exceptions.Utils;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolationException;
 
 
 /**
@@ -38,5 +42,26 @@ public class ClienteBean extends BaseBean<Cliente>{
             throw new EJBException(e.getMessage());
         }
     }
+    
+    public void update(String username, String name, String morada, String pessoaContacto) 
+            throws EntityDoesNotExistsException, MyConstraintViolationException {
+        try {
+            Cliente c = em.find(Cliente.class, username);
+            if (c == null) {
+                throw new EntityDoesNotExistsException("Não existe nenhum cliente com esse username!");
+            }
+            c.setName(name);
+            c.setMorada(morada);
+            c.setPessoaContacto(pessoaContacto);
+            em.merge(c);
+        } catch (EntityDoesNotExistsException e) {
+            throw e;
+        } catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(Utils.getConstraintViolationMessages(e));
+        /*} catch (Exception e) {
+            throw new EJBException(e.getMessage());*/
+        }
+    }
+
     
 }

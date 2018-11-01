@@ -10,11 +10,15 @@ import ejbs.ClienteBean;
 import entities.Administrador;
 import entities.Cliente;
 import exceptions.EntityAlreadyExistsException;
+import exceptions.EntityDoesNotExistsException;
+import exceptions.MyConstraintViolationException;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIParameter;
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -33,11 +37,34 @@ public class AdministratorManager {
     private String pessoaContacto;
     private String username;
     private String password;
+    
+    private Cliente currentCliente;
 
     public AdministratorManager() {
     }
     
- 
+    public String removeCliente(ActionEvent event){
+            UIParameter param = (UIParameter) event.getComponent().findComponent("deleteClienteId");
+            String id = param.getValue().toString();
+            cb.remove(id);
+        
+        return "index?faces-redirect=true";
+    }
+    
+
+    public Cliente getCurrentCliente() {
+        return currentCliente;
+    }
+
+    public void setCurrentCliente(Cliente currentCliente) {
+        this.currentCliente = currentCliente;
+    }
+    
+    public String updateCliente() throws EntityDoesNotExistsException, MyConstraintViolationException{
+        cb.update(currentCliente.getUsername(), currentCliente.getName(), currentCliente.getMorada(), currentCliente.getPessoaContacto());
+       return "index?faces-redirect=true";
+    }
+    
     public String createCliente(){
         try{
            cb.create(morada, pessoaContacto, name, username, password);
