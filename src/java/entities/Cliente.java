@@ -17,7 +17,8 @@ import javax.persistence.Entity;
 @Entity
 public class Cliente extends User implements Serializable{
     private String morada;
-    private String pessoaContacto; // ver com o prof se a pessoa de contacto pode ser string ou precisamos guardar a informacao da pessoa
+    // ver com o prof se a pessoa de contacto pode ser string ou precisamos guardar a informacao da pessoa
+    private String pessoaContacto; 
     
     private List<Configuracao> configuracoes;
     
