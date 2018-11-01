@@ -7,12 +7,17 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Lucas
  */
 @Entity
+@NamedQuery(
+    name="getAllAdministradors",
+    query="SELECT c FROM Administrador c ORDER BY c.name"
+)
 public class Administrador  extends User implements Serializable {
     private String cargo;
     private String email;

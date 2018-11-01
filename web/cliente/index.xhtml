@@ -7,6 +7,8 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        <h:form>
+            
         <h:dataTable value="#{administratorManager.allClientes}" var="o">
            <h:column>
     		<f:facet name="header">Name:</f:facet>
@@ -20,10 +22,27 @@
     		<f:facet name="header">Morada:</f:facet>
                     #{o.morada}
             </h:column>
-          
+          <h:column>
+                <f:facet name="Action">Actions</f:facet>
+                <h:commandButton value="Details" action="admin_clientes_detalhes?faces-redirect=true">
+                   <f:setPropertyActionListener target="#{administratorManager.currentCliente}" value="${o}"/>
+                </h:commandButton>
+                <h:commandButton value="UPDATE" action="admin_clientes_update">
+                   <f:setPropertyActionListener target="#{administratorManager.currentCliente}" value="${o}"/>
+                </h:commandButton>
+                <h:commandButton value="DELETE"  actionListener="${administratorManager.removeCliente}">
+                    <f:param name="deleteClienteId" id="deleteClienteId" value="#{o.username}"/>
+                </h:commandButton>
+                
+            </h:column>
             
         
         </h:dataTable>
+            </h:form>
+        
+        <div>
+            <h:link value="Create Cliente" outcome="admins_client_create?faces-redirect=true"></h:link>
+        </div>
     </h:body>
 </html>
 

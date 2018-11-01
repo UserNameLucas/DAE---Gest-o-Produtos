@@ -33,8 +33,22 @@ public class AdministratorManager {
     private String pessoaContacto;
     private String username;
     private String password;
+    
+    private Cliente currentCliente;
 
     public AdministratorManager() {
+    }
+    
+    public void removeCliente(){
+        
+    }
+
+    public Cliente getCurrentCliente() {
+        return currentCliente;
+    }
+
+    public void setCurrentCliente(Cliente currentCliente) {
+        this.currentCliente = currentCliente;
     }
     
  
