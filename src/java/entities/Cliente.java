@@ -26,7 +26,7 @@ public class Cliente extends User implements Serializable{
     }
 
     public Cliente(String morada, String pessoaContacto, String name, String username, String password) {
-            super(name, username, password);
+        super(name, username, password);
         this.morada = morada;
         this.pessoaContacto = pessoaContacto;
         this.configuracoes = new ArrayList<>();

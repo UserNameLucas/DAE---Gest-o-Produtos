@@ -7,8 +7,11 @@ package web;
 
 import ejbs.AdministradorBean;
 import ejbs.ClienteBean;
+import ejbs.SoftConfigBean;
 import entities.Administrador;
 import entities.Cliente;
+import entities.Estado;
+import entities.Modulo;
 import exceptions.EntityAlreadyExistsException;
 import java.util.List;
 
@@ -26,13 +29,22 @@ public class AdministratorManager {
     @EJB
     private ClienteBean cb;
     @EJB
+    private SoftConfigBean sb;
+    @EJB
     private AdministradorBean ab;
-    
+    //Cliente
     private String name;
     private String morada;
     private String pessoaContacto;
     private String username;
     private String password;
+    
+    //Configuracao
+    private String descricao;
+    private Estado estado;
+    private String nomeSoftware;
+    private int versaoBase;
+    private Modulo modulos;
 
     public AdministratorManager() {
     }
@@ -40,6 +52,16 @@ public class AdministratorManager {
     public String createCliente(){
         try{
            cb.create(morada, pessoaContacto, name, username, password);
+        //cleanStudent();
+        }catch(EntityAlreadyExistsException e){
+            return e.getMessage();
+        }
+        return "index?faces-redirect=true";
+    }
+    
+    public String createConfiguracao(){
+        try{
+           sb.create(descricao, estado, nomeSoftware, versaoBase, modulos);
         //cleanStudent();
         }catch(EntityAlreadyExistsException e){
             return e.getMessage();
