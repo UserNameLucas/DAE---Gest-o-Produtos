@@ -51,7 +51,11 @@ public class AdministratorManager {
         this.currentCliente = currentCliente;
     }
     
- 
+    public String updateCliente(){
+        //cb.update(currentCliente.getUsername(),currentCliente.getPassword(), currentCliente.getName(), currentCliente.getEmail());
+       return "index?faces-redirect=true";
+    }
+    
     public String createCliente(){
         try{
            cb.create(morada, pessoaContacto, name, username, password);

@@ -6,7 +6,50 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-       UPDATE dp cliente
+       <h1>Criar um Cliente</h1>
+        
+        <h:form>
+            <h:panelGrid columns="3">
+            
+                <h:outputLabel for="name">Nome da empresa:</h:outputLabel>
+                <h:inputText id="name" 
+                             required="true" 
+                             requiredMessage="O nome da empresa é precisso"
+                             value="#{administratorManager.currentCliente.name}"/>
+                <h:message for="name" style="color:red"/>
+
+                <h:outputLabel for="morada">Morada:</h:outputLabel>
+                <h:inputText id="morada" 
+                             required="true"
+                             requiredMessage="A morada é precisso"
+                             value="#{administratorManager.currentCliente.morada}">
+                </h:inputText>
+                
+                <h:message for="morada" style="color:red"/>
+                 
+                <h:outputLabel for="pessoaContacto">Pessoa de contacto: </h:outputLabel>
+                <h:inputText id="pessoaContacto" 
+                             required="true"
+                             requiredMessage="O username é precisso"
+                             value="#{administratorManager.currentCliente.pessoaContacto}"/>
+                <h:message for="pessoaContacto" style="color:red"/>
+
+
+                <h:outputLabel for="username">UserName:</h:outputLabel>
+                <h:inputText id="username" 
+                             required="true"
+                             requiredMessage="O username é precisso"
+                             value="#{administratorManager.currentCliente.username}"/>
+                <h:message for="username" style="color:red"/>
+                 
+                
+               
+                <br></br>
+                 
+            <h:commandButton value="UPDATE" action="#{administratorManager.updateCliente}"/>
+            </h:panelGrid>
+            
+        </h:form>
     </h:body>
 </html>
 
