@@ -9,7 +9,6 @@ import entities.Administrador;
 import entities.User;
 import exceptions.EntityAlreadyExistsException;
 import javax.ejb.EJBException;
-import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

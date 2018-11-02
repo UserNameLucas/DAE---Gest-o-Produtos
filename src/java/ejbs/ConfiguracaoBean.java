@@ -19,7 +19,7 @@ import javax.persistence.PersistenceContext;
  * @author RS
  */
 @Stateless
-public class SoftConfigBean extends BaseBean<Configuracao>{
+public class ConfiguracaoBean extends BaseBean<Configuracao>{
     
     @PersistenceContext
     private EntityManager em;
@@ -35,8 +35,6 @@ public class SoftConfigBean extends BaseBean<Configuracao>{
         
         } catch (EntityAlreadyExistsException e) {
             throw e;
-        } catch (Exception e) {
-            throw new EJBException(e.getMessage());
-        }
+        } 
     }
 }

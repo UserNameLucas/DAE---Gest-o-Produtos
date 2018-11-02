@@ -7,7 +7,7 @@ package web;
 
 import ejbs.AdministradorBean;
 import ejbs.ClienteBean;
-import ejbs.SoftConfigBean;
+import ejbs.ConfiguracaoBean;
 import entities.Administrador;
 import entities.Cliente;
 import entities.Estado;
@@ -29,7 +29,7 @@ public class AdministratorManager {
     @EJB
     private ClienteBean cb;
     @EJB
-    private SoftConfigBean sb;
+    private ConfiguracaoBean sb;
     @EJB
     private AdministradorBean ab;
     //Cliente
@@ -47,11 +47,11 @@ public class AdministratorManager {
     private int versaoBase;
     private Modulo modulos;
     
-    public SoftConfigBean getSb() {
+    public ConfiguracaoBean getSb() {
         return sb;
     }
 
-    public void setSb(SoftConfigBean sb) {
+    public void setSb(ConfiguracaoBean sb) {
         this.sb = sb;
     }
 
@@ -69,10 +69,13 @@ public class AdministratorManager {
     }
     
     public String createConfiguracao() throws Exception{
-        
-           sb.create(id, descricao, estado, nomeSoftware, versaoBase, modulos);
-        //cleanStudent();
-        return "index?faces-redirect=true";
+        try{
+            sb.create(id, descricao, estado, nomeSoftware, versaoBase, modulos);
+            //cleanStudent();
+            return "index?faces-redirect=true"; 
+        }catch(Exception e){
+            return e.getMessage();
+        } 
         
     }
 
