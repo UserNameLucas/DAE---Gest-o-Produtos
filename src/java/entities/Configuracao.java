@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Table(name = "CONFIGURACAO")
 public class Configuracao implements Serializable{
     @Id
-    private int id;
+    private int codigo;
     private String descricao;
     private Estado estado;
     private String nomeSoftware;
@@ -36,8 +36,8 @@ public class Configuracao implements Serializable{
     public Configuracao() { 
     }
 
-    public Configuracao(int id, String descricao, Estado estado, String nomeSoftware, int versaoBase, Modulo modulos) {
-        this.id = id;
+    public Configuracao(int codigo, String descricao, Estado estado, String nomeSoftware, int versaoBase, Modulo modulos) {
+        this.codigo = codigo;
         this.descricao = descricao;
         this.estado = estado;
         this.nomeSoftware = nomeSoftware;
@@ -45,12 +45,12 @@ public class Configuracao implements Serializable{
         this.modulos = modulos;
     }
 
-    public int getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescricao() {

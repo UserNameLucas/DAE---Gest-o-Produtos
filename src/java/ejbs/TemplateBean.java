@@ -8,6 +8,7 @@ package ejbs;
 import entities.Configuracao;
 import entities.Template;
 import exceptions.EntityAlreadyExistsException;
+import exceptions.EntityDoesNotExistsException;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,13 +25,18 @@ public class TemplateBean extends BaseBean<Template>{
     @PersistenceContext
     private EntityManager em;
     
-    public void create(String name, Configuracao configuracao)
-            throws EntityAlreadyExistsException{
+    public void create(int codigo, String name, int codigoConfiguracao)
+            throws EntityAlreadyExistsException, EntityDoesNotExistsException{
         try {
             if (em.find(Template.class, name) != null) {
                 throw new EntityAlreadyExistsException("O utilizador com este username já existe!");
             }
-            Template t = new Template(name, configuracao);
+            Configuracao c = em.find(Configuracao.class, codigoConfiguracao);
+            if(c == null){
+                throw new EntityDoesNotExistsException("A configuracão não existe.");
+            }
+            
+            Template t = new Template(codigo,name, c);
             em.persist(t);
         } catch (EntityAlreadyExistsException e) {
             throw e;

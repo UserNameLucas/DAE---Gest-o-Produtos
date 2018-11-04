@@ -30,12 +30,10 @@ public class ConfigBean {
     @EJB
     private AdministradorBean administradorBean;
     @EJB
-<<<<<<< HEAD
     private TemplateBean templateBean;
-    
-=======
+    @EJB
     private ConfiguracaoBean configuracaoBean;
->>>>>>> maestro
+
     
    @PostConstruct
     public void populateBD() {
@@ -47,11 +45,9 @@ public class ConfigBean {
             
             administradorBean.create("Presidente", "Filermindo", "adminA", "adminA", "adminA@mail.com");
             
-<<<<<<< HEAD
-            //templateBean.create
-=======
             configuracaoBean.create(1, "ricado", Estado.ATIVA, "vai", 0, new Modulo("nomeMOdulo"));
->>>>>>> maestro
+            
+            templateBean.create(1,"template1", 1);
 
         } catch(Exception e){
             logger.warning(e.getMessage());

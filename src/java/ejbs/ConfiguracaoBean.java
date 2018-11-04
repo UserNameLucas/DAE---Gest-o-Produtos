@@ -24,13 +24,13 @@ public class ConfiguracaoBean extends BaseBean<Configuracao>{
     @PersistenceContext
     private EntityManager em;
     
-    public void create(int id, String descricao, Estado estado, String nomeSoftware, int versaoBase, Modulo modulos) throws EntityAlreadyExistsException{
+    public void create(int codigo, String descricao, Estado estado, String nomeSoftware, int versaoBase, Modulo modulos) throws EntityAlreadyExistsException{
         try {
-            if (em.find(Configuracao.class, id) != null) {
+            if (em.find(Configuracao.class, codigo) != null) {
                 throw new EntityAlreadyExistsException("O software com este id já existe!");
             }
         
-        Configuracao configuracao = new Configuracao(id, descricao, estado, nomeSoftware, versaoBase, modulos);
+        Configuracao configuracao = new Configuracao(codigo, descricao, estado, nomeSoftware, versaoBase, modulos);
         em.persist(configuracao);
         
         } catch (EntityAlreadyExistsException e) {

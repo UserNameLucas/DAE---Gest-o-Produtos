@@ -43,9 +43,9 @@ public class AdministratorManager {
     private String username;
     private String password;
     
-<<<<<<< HEAD
+
     private Cliente currentCliente;
-=======
+
     //Configuracao
     private int id;
     private String descricao;
@@ -61,7 +61,6 @@ public class AdministratorManager {
     public void setSb(ConfiguracaoBean sb) {
         this.sb = sb;
     }
->>>>>>> maestro
 
     public AdministratorManager() {
     }
