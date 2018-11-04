@@ -5,6 +5,8 @@
  */
 package ejbs;
 
+import entities.Estado;
+import entities.Modulo;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -29,7 +31,9 @@ public class ConfigBean {
     private AdministradorBean administradorBean;
     @EJB
     private TemplateBean templateBean;
-    
+    @EJB
+    private ConfiguracaoBean configuracaoBean;
+
     
    @PostConstruct
     public void populateBD() {
@@ -41,7 +45,9 @@ public class ConfigBean {
             
             administradorBean.create("Presidente", "Filermindo", "adminA", "adminA", "adminA@mail.com");
             
-            //templateBean.create
+            configuracaoBean.create(1, "ricado", Estado.ATIVA, "vai", 0, new Modulo("nomeMOdulo"));
+            
+            templateBean.create(1,"template1", 1);
 
         } catch(Exception e){
             logger.warning(e.getMessage());

@@ -21,12 +21,12 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NamedQuery(
     name="getAllTemplates",
-    query="SELECT c FROM Template c ORDER BY c.name"
+    query="SELECT c FROM Template c "
 )
 @Table(name="TEMPLATES")
 public class Template implements Serializable{
     @Id
-    private String codigo;
+    private int codigo;
     @NotNull(message = "Nome não pode estar vazio!")
     private String nome;
     @NotNull(message = "É necessario uma configuração!")
@@ -35,9 +35,18 @@ public class Template implements Serializable{
     public Template() {
     }
 
-    public Template(String nome, Configuracao configuracao) {
+    public Template(int codigo,String nome, Configuracao configuracao) {
+        this.codigo = codigo;
         this.nome = nome;
         this.configuracao = configuracao;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
