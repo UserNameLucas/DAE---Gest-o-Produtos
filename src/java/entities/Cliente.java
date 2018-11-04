@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -20,9 +22,12 @@ import javax.persistence.NamedQuery;
     name="getAllClientes",
     query="SELECT c FROM Cliente c ORDER BY c.name"
 )
+@Table(name="CLIENTES")
 public class Cliente extends User implements Serializable{
+    @NotNull(message="A morada não pode estar vazia!")
     private String morada;
     // ver com o prof se a pessoa de contacto pode ser string ou precisamos guardar a informacao da pessoa
+    @NotNull(message="A pessoa de contacto não pode estar vazia!")
     private String pessoaContacto; 
     
     private List<Configuracao> configuracoes;

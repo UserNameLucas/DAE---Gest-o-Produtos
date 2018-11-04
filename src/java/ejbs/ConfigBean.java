@@ -27,6 +27,9 @@ public class ConfigBean {
     private ClienteBean clienteBean;
     @EJB
     private AdministradorBean administradorBean;
+    @EJB
+    private TemplateBean templateBean;
+    
     
    @PostConstruct
     public void populateBD() {
@@ -37,6 +40,8 @@ public class ConfigBean {
             clienteBean.create("trav. da outra rua mas do outro lado", "Zezim", "QuerFazer", "userC", "userC");
             
             administradorBean.create("Presidente", "Filermindo", "adminA", "adminA", "adminA@mail.com");
+            
+            //templateBean.create
 
         } catch(Exception e){
             logger.warning(e.getMessage());

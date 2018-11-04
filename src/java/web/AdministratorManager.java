@@ -44,9 +44,14 @@ public class AdministratorManager {
     }
     
     public String removeCliente(ActionEvent event){
+        try{    
             UIParameter param = (UIParameter) event.getComponent().findComponent("deleteClienteId");
             String id = param.getValue().toString();
             cb.remove(id);
+        } catch (Exception e) {
+            //FacesExceptionHandler.handleException(e, "Unexpected error! Try again later!", component, logger);
+            return null;
+        }
         
         return "index?faces-redirect=true";
     }

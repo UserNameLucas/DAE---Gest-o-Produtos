@@ -8,6 +8,9 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *
@@ -18,8 +21,16 @@ import javax.persistence.NamedQuery;
     name="getAllAdministradors",
     query="SELECT c FROM Administrador c ORDER BY c.name"
 )
+@Table(name="ADMINISTRADORES")
 public class Administrador  extends User implements Serializable {
+    
+    @NotNull(message="O cargo não pode estar vazio!")
     private String cargo;
+    @NotNull(message="O Email não pode estar vazio")
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+        +"[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+        +"(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
+        message = "Formato do email invalido!")
     private String email;
 
     public Administrador() {
