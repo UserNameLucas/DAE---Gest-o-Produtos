@@ -5,10 +5,8 @@
  */
 package ejbs;
 
-import entities.Cliente;
 import entities.Configuracao;
 import entities.Template;
-import entities.User;
 import exceptions.EntityAlreadyExistsException;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
