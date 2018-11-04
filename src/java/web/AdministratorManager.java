@@ -7,8 +7,11 @@ package web;
 
 import ejbs.AdministradorBean;
 import ejbs.ClienteBean;
+import ejbs.ConfiguracaoBean;
 import entities.Administrador;
 import entities.Cliente;
+import entities.Estado;
+import entities.Modulo;
 import exceptions.EntityAlreadyExistsException;
 import exceptions.EntityDoesNotExistsException;
 import exceptions.MyConstraintViolationException;
@@ -30,15 +33,35 @@ public class AdministratorManager {
     @EJB
     private ClienteBean cb;
     @EJB
+    private ConfiguracaoBean sb;
+    @EJB
     private AdministradorBean ab;
-    
+    //Cliente
     private String name;
     private String morada;
     private String pessoaContacto;
     private String username;
     private String password;
     
+<<<<<<< HEAD
     private Cliente currentCliente;
+=======
+    //Configuracao
+    private int id;
+    private String descricao;
+    private Estado estado;
+    private String nomeSoftware;
+    private int versaoBase;
+    private Modulo modulos;
+    
+    public ConfiguracaoBean getSb() {
+        return sb;
+    }
+
+    public void setSb(ConfiguracaoBean sb) {
+        this.sb = sb;
+    }
+>>>>>>> maestro
 
     public AdministratorManager() {
     }
@@ -89,6 +112,17 @@ public class AdministratorManager {
         this.password=null;
         this.pessoaContacto = null;
     }
+    
+    public String createConfiguracao() throws Exception{
+        try{
+            sb.create(id, descricao, estado, nomeSoftware, versaoBase, modulos);
+            //cleanStudent();
+            return "index?faces-redirect=true"; 
+        }catch(Exception e){
+            return e.getMessage();
+        } 
+        
+    }
 
     public String getName() {
         return name;
@@ -130,6 +164,47 @@ public class AdministratorManager {
         this.password = password;
     }
     
+    //Configuracao
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
+    public void setModulos(Modulo modulos) {
+        this.modulos = modulos;
+    }
+
+    public String getNomeSoftware() {
+        return nomeSoftware;
+    }
+
+    public void setNomeSoftware(String nomeSoftware) {
+        this.nomeSoftware = nomeSoftware;
+    }
+
+    public int getVersaoBase() {
+        return versaoBase;
+    }
+
+    public void setVersaoBase(int versaoBase) {
+        this.versaoBase = versaoBase;
+    }
+
+    public Modulo getModulos() {
+        return modulos;
+    }
+
     
     public List<Cliente> getAllClientes(){
         return cb.getAll();
