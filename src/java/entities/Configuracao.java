@@ -8,7 +8,10 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -28,6 +31,11 @@ public class Configuracao implements Serializable{
     private int versaoBase;
     private Modulo modulos;
     
+    @ManyToOne
+    @JoinColumn(name = "USERNAME")
+    @NotNull
+    private Cliente cliente;
+    
     // HARDWARE / SERVIÇOS CLOUD UTILIZADOS
     // LINCENCAS 
     // PARAMETRIZAÇÕES 
@@ -36,13 +44,22 @@ public class Configuracao implements Serializable{
     public Configuracao() { 
     }
 
-    public Configuracao(int codigo, String descricao, Estado estado, String nomeSoftware, int versaoBase, Modulo modulos) {
+    public Configuracao(int codigo, String descricao, Estado estado, String nomeSoftware, int versaoBase, Modulo modulos, Cliente cliente) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.estado = estado;
         this.nomeSoftware = nomeSoftware;
         this.versaoBase = versaoBase;
         this.modulos = modulos;
+        this.cliente = cliente;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public int getCodigo() {

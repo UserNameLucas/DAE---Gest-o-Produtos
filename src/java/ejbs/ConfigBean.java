@@ -40,14 +40,14 @@ public class ConfigBean {
 
         try {
             clienteBean.create("trav. daquela rua", "Jaquim", "FAzTudo", "userA", "userA");
-            clienteBean.create("trav. da outra rua", "Fernandim", "FezTudo", "userB", "userB");
-            clienteBean.create("trav. da outra rua mas do outro lado", "Zezim", "QuerFazer", "userC", "userC");
+            //clienteBean.create("trav. da outra rua", "Fernandim", "FezTudo", "userB", "userB");
+            //clienteBean.create("trav. da outra rua mas do outro lado", "Zezim", "QuerFazer", "userC", "userC");
             
-            administradorBean.create("Presidente", "Filermindo", "adminA", "adminA", "adminA@mail.com");
+            //administradorBean.create("Presidente", "Filermindo", "adminA", "adminA", "adminA@mail.com");
             
-            configuracaoBean.create(1, "ricado", Estado.ATIVA, "vai", 0, new Modulo("nomeMOdulo"));
+            configuracaoBean.create(1, "ricado", Estado.ATIVA, "vai", 0, new Modulo("nomeMOdulo"), "userA");
             
-            templateBean.create(1,"template1", 1);
+            //templateBean.create(1,"template1", 1);
 
         } catch(Exception e){
             logger.warning(e.getMessage());

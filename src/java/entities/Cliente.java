@@ -8,8 +8,10 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -18,11 +20,11 @@ import javax.validation.constraints.NotNull;
  * @author Lucas
  */
 @Entity
+@Table(name="CLIENTES")
 @NamedQuery(
     name="getAllClientes",
-    query="SELECT c FROM Cliente c ORDER BY c.name"
+    query="SELECT c FROM Cliente c "
 )
-@Table(name="CLIENTES")
 public class Cliente extends User implements Serializable{
     @NotNull(message="A morada não pode estar vazia!")
     private String morada;
@@ -30,6 +32,7 @@ public class Cliente extends User implements Serializable{
     @NotNull(message="A pessoa de contacto não pode estar vazia!")
     private String pessoaContacto; 
     
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE)
     private List<Configuracao> configuracoes;
     
     public Cliente() {

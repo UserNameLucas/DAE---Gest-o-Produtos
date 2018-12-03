@@ -29,7 +29,7 @@ public class TemplateBean extends BaseBean<Template>{
             throws EntityAlreadyExistsException, EntityDoesNotExistsException{
         try {
             if (em.find(Template.class, name) != null) {
-                throw new EntityAlreadyExistsException("O utilizador com este username já existe!");
+                throw new EntityAlreadyExistsException("O template com este codigo já existe!");
             }
             Configuracao c = em.find(Configuracao.class, codigoConfiguracao);
             if(c == null){

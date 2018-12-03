@@ -114,8 +114,8 @@ public class AdministratorManager {
     
     public String createConfiguracao() throws Exception{
         try{
-            sb.create(id, descricao, estado, nomeSoftware, versaoBase, modulos);
-            //cleanStudent();
+            sb.create(id, descricao, estado, nomeSoftware, versaoBase, modulos, currentCliente.getUsername());
+            //cleanCliente();
             return "index?faces-redirect=true"; 
         }catch(Exception e){
             return e.getMessage();

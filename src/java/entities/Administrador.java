@@ -17,11 +17,11 @@ import javax.validation.constraints.Pattern;
  * @author Lucas
  */
 @Entity
+@Table(name="ADMINISTRADORS")
 @NamedQuery(
     name="getAllAdministradors",
     query="SELECT c FROM Administrador c ORDER BY c.name"
 )
-@Table(name="ADMINISTRADORES")
 public class Administrador  extends User implements Serializable {
     
     @NotNull(message="O cargo não pode estar vazio!")

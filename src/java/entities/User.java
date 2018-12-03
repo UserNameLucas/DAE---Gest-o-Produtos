@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USERS")
 @NamedQueries({
-    @NamedQuery(name = "getAllUsers", query = "SELECT u FROM User u ORDER BY u.name")
+    @NamedQuery(name = "getAllUsers", query = "SELECT u FROM User u")
 })
 public class User implements Serializable{
      
